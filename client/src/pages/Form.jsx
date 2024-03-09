@@ -27,7 +27,7 @@ const initialValuesRegister = {
   email: "",
   password: "",
   location: "",
-  picture: "",
+  picture: null,
 };
 
 const initialValuesLogin = {
@@ -37,6 +37,7 @@ const initialValuesLogin = {
 
 const Form = () => {
   const [pageType, setPageType] = useState("login")
+  const [isRegistered, setIsRegistered] = useState(false)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const isRegister = pageType === "register"
@@ -63,6 +64,7 @@ const Form = () => {
       if (savedUser) {
         setIsRegistered(true)
       }
+      onSubmitProps.resetForm()
     }
     
     const [open, setOpen] = useState(false)
@@ -162,13 +164,14 @@ const Form = () => {
 
                 <div className="col-span-4 rounded p-4">
 
-                  <Dropzone
-                    acceptedFiles=".jpg,.jpeg,.png"
-                    multiple={false}
-                    onDrop={(acceptedFiles) =>
-                      setFieldValue("picture", acceptedFiles[0])
-                    }
-                  >
+                <Dropzone
+                  acceptedFiles=".jpg,.jpeg,.png"
+                  multiple={false}
+                  onDrop={(acceptedFiles) =>
+                    setFieldValue("picture", acceptedFiles[0] || null) 
+                  }
+                >
+
                     {({ getRootProps, getInputProps }) => (
                       <div
                         {...getRootProps()}
@@ -232,7 +235,6 @@ const Form = () => {
             </div>
           </div>
 
-          {/* BUTTONS */}
           <div className="mt-8 mb-8">
             <button
               className="w-full py-4 bg-blue-500 text-white rounded"

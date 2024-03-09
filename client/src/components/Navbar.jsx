@@ -1,86 +1,96 @@
 import { useState } from 'react'
-import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { useMediaQuery } from 'react-responsive'
 import { setLogout } from '../store/store'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const user = useSelector((state) => state.user)
-  const fullName = `${user.firstName} ${user.lastName}`
-  const isNonMobileScreens = useMediaQuery({ query: '(min-width:600px)' })
-  
+  const isOpen = isMobileMenuToggled
+
+  const handleLogout = () => {
+    dispatch(setLogout())
+    navigate('/')
+  }
+
+  const handleMenuToggle = () => {
+    setIsMobileMenuToggled(!isMobileMenuToggled)
+  }
+
+  const handleLinkClick = () => {
+    setIsMobileMenuToggled(false)
+  }
+
+  const handleCloseButtonClick = () => {
+    setIsMobileMenuToggled(false)
+  }
+
   return (
-    <div className='mt-8'>
-    {/* Navigation bar, desktop */}
-    {isNonMobileScreens && (
-      <div className="flex justify-between items-center">
-        <h1 className="cursor-pointer text-blue-500 hover:text-blue-300" onClick={() => navigate("/home")}>
-          Connectify
-        </h1>
-        <div className="flex gap-4">
-          <div className="flex gap-2 cursor-pointer">
-            <div onClick={() => navigate('/home')} className="hover:text-blue-500">Home</div>
-            <div className="hover:text-blue-500">Messages</div>
-            <div className="hover:text-blue-500">Notifications</div>
-            <div className="hover:text-blue-500">Settings</div>
-            <div className="hover:text-blue-500">Dark mode</div>
+    <nav className="bg-gray-600">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <div className="flex justify-between items-center py-4 md:justify-start md:space-x-10">
+          <div className="flex justify-start lg:w-0 lg:flex-1">
+            <Link to="/home" className="font-medium text-white text-2xl hover:text-gray-300">
+              Connectify
+            </Link>
           </div>
-          <select
-            value={fullName}
-            onChange={(e) => {
-              if (e.target.value === 'Log Out') {
-                dispatch(setLogout());
-              }
-            }}
-            className="w-48 px-4 py-2 rounded border border-gray-300"
-          >
-            <option value={fullName}>{fullName}</option>
-            <option value="Log Out">Log Out</option>
-          </select>
+          <div className="-mr-2 -my-2 md:hidden">
+            <button onClick={handleMenuToggle} type="button" className={`inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white ${isMobileMenuToggled ? 'hidden' : ''}`} aria-expanded="false">
+              <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+              </svg>
+            </button>
+            <button onClick={handleMenuToggle} type="button" className={`inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white ${!isMobileMenuToggled ? 'hidden' : ''}`} aria-expanded="false">
+              <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+            <nav className="flex space-x-4">
+              <Link to="/home" onClick={handleLinkClick} className="text-base font-medium text-white hover:text-gray-300">
+                Home
+              </Link>
+              <a href="#" onClick={handleLinkClick} className="text-base font-medium text-white hover:text-gray-300">
+                Messages
+              </a>
+              <a href="#" onClick={handleLinkClick} className="text-base font-medium text-white hover:text-gray-300">
+                Notifications
+              </a>
+              <button onClick={handleLogout} className="text-base font-medium text-white hover:text-gray-300">
+                Logout
+              </button>
+            </nav>
+          </div>
         </div>
       </div>
-    )}
-      {/* Navigation bar, mobile */}
-      {!isNonMobileScreens && (
-        <div>
-          <button onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)} className="md:hidden">
-            <MenuIcon className="w-6 h-6" />
-          </button>
 
-          {isMobileMenuToggled && (
-            <div className="fixed inset-0 flex flex-col justify-center items-center gap-8 p-8 bg-gray-200">
-              <button onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)} className="absolute top-4 right-4">
-                <XIcon className="w-6 h-6" />
+      <div className={`md:hidden ${isMobileMenuToggled ? '' : 'hidden'}`}>
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <Link to="/home" onClick={handleLinkClick} className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-300">
+            Home
+          </Link>
+          <a href="#" onClick={handleLinkClick} className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-300">
+            Messages
+          </a>
+          <a href="#" onClick={handleLinkClick} className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-300">
+            Notifications
+          </a>
+        </div>
+        <div className="pt-4 pb-3 border-t border-gray-700">
+          <div className="flex items-center px-5">
+            <div className="flex-shrink-0">
+              <button onClick={handleLogout} className="text-base font-medium text-white hover:text-gray-300">
+                Logout
               </button>
-              <div className="flex flex-col gap-4 cursor-pointer">
-                <div onClick={() => navigate('/home')}>Home</div>
-                <div>Messages</div>
-                <div>Notifications</div>
-                <div>Settings</div>
-                <div>Dark mode</div>
-              </div>
-              <select
-                value={fullName}
-                onChange={(e) => {
-                  if (e.target.value === 'Log Out') {
-                    dispatch(setLogout());
-                  }
-                }}
-                className="w-48 px-4 py-1 rounded border border-gray-300"
-              >
-                <option value={fullName}>{fullName}</option>
-                <option onClick={() => dispatch(setLogout())}>Log Out</option>
-              </select>
             </div>
-          )}
           </div>
-      )}
-    </div>
-
+        </div>
+      </div>
+    </nav>
   )
 }
 
