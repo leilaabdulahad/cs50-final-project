@@ -11,6 +11,7 @@ const ProfilePage = () => {
   const [user, setUser] = useState(null)
   const { userId } = useParams()
   const token = useSelector((state) => state.token)
+  const loggedInUserId = useSelector((state) => state.user._id)
 
   const getUser = async () => {
     const response = await fetch(`http://localhost:3001/users/${userId}`, {
@@ -37,7 +38,7 @@ const ProfilePage = () => {
           <FriendListWidget userId={userId} />
         </div>
         <div className="w-full mt-8 md:w-2/5">
-          <CreatePostWidget picturePath={user.picturePath} />
+          {loggedInUserId === userId && <CreatePostWidget picturePath={user.picturePath} />}
           <div className="my-8" />
           <PostsContainerWidget userId={userId} isProfile />
         </div>

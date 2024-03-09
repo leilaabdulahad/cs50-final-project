@@ -9,6 +9,7 @@ const PostsContainerWidget = ({ userId, isProfile = false }) => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token)
   const posts = useSelector((state) => state.posts)
+  const loggedInUserId = useSelector((state) => state.user._id)
 
   const fetchPosts = async () => {
     const url = isProfile ? `http://localhost:3001/posts/${userId}/posts` : "http://localhost:3001/posts";
@@ -52,7 +53,7 @@ const PostsContainerWidget = ({ userId, isProfile = false }) => {
 
 
   return (
-    <>
+    <div className={`${isProfile && loggedInUserId !== userId ? 'transform -translate-y-8' : ''}`}>
       {posts && posts.length > 0 ? posts.slice().reverse().map(
         ({
           _id,
@@ -83,7 +84,7 @@ const PostsContainerWidget = ({ userId, isProfile = false }) => {
           );
         }
       ) : <p>No posts available</p>}
-    </>
+    </div>
   )
   }
   
