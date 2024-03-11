@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 import { REHYDRATE } from "redux-persist"
 
 const initialState = {
-  mode: "light",
+  // mode: "light",
   user: {
     friends: [],
   },
