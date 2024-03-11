@@ -77,7 +77,7 @@ Within the components folder, a dedicated widgets folder has been included to en
 Throughout the project, Tailwind has been utilized for styling purposes. Tailwind CSS offers a streamlined approach to styling by eliminating the need to navigate between multiple files. 
 
 ## Built with
-[![My Skills](https://skillicons.dev/icons?i=react,javascript,vite,redux,tailwindcss,express.nodejs,mongodb)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=react,javascript,vite,redux,tailwindcss,express,nodejs,mongodb)](https://skillicons.dev)
 
 ## Acknowledgments
 The images used in this project are downloaded from unsplash.com 
