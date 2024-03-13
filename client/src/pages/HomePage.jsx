@@ -16,13 +16,13 @@ const HomePage = () => {
       <div className="w-full px-4 md:px-24 py-8 flex flex-col md:flex-row gap-2 justify-between">
         <div className="flex-none w-full md:w-1/4">
           <UserWidget userId={_id} picturePath={picturePath} />
+          <FriendListWidget userId={_id} />
         </div>
         <div className="flex-grow mt-8 w-full md:w-1/2">
           <CreatePostWidget picturePath={picturePath} />
           <PostsContainerWidget userId={_id} />
         </div>
         <div className="flex-none w-full md:w-1/4">
-          <FriendListWidget userId={_id} />
           <div className="my-8" />
           <AdvertWidget />
         </div>

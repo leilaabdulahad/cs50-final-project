@@ -31,7 +31,7 @@ const FriendProfile = ({ friendId, name, subtitle, userPicturePath }) => {
       return (
         <div className="relative flex flex-col">
           <div className="flex gap-4">
-            <ProfileImg image={userPicturePath} size="64px" className="lg:block hidden" />
+            <ProfileImg image={userPicturePath} size="64px" />
             <div
               onClick={() => {
                 navigate(`/profile/${friendId}`)
@@ -39,10 +39,10 @@ const FriendProfile = ({ friendId, name, subtitle, userPicturePath }) => {
               }}
               className="cursor-pointer"
             >
-              <div className="text-xl mt-2 font-semibold text-blue-500 hover:text-blue-400 pr-2">
+              <div className="text-xl mt-2 pr-8 font-semibold text-blue-500 hover:text-blue-400">
                 {name}
               </div>
-              <div className="text-base text-gray-500 lg:block hidden">
+              <div className="text-base text-gray-500 ">
                 {subtitle}
               </div>
             </div>

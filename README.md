@@ -4,7 +4,7 @@
 ## Table of Contents
 - [About the Project](#about-the-project)
 - [Built with](#built-with)
-- [Acknowledgments](#acknowledgements)
+- [Acknowledgements](#acknowledgements)
 
 ## About the project
 This project is a responsive social media website designed to facilitate connections and interactions between users. Users can create posts containing text and images, share their thoughts, experiences, and moments. Additionally, users can add other users to their friends list.
@@ -79,5 +79,5 @@ Throughout the project, Tailwind has been utilized for styling purposes. Tailwin
 ## Built with
 [![My Skills](https://skillicons.dev/icons?i=react,javascript,vite,redux,tailwindcss,express,nodejs,mongodb)](https://skillicons.dev)
 
-## Acknowledgments
+## Acknowledgements
 The images used in this project are downloaded from unsplash.com 

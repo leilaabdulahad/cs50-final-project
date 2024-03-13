@@ -88,6 +88,7 @@ const SinglePostWidget = ({
 
   return (
     <div className="relative bg-gray-200 p-4 rounded-lg mb-2 mt-4">
+      
       <FriendProfile friendId={postUserId} name={name} subtitle={location} userPicturePath={userPicturePath} />
       <div className="h5 text-main-color mt-4">{description}</div>
       {picturePath && (

@@ -31,7 +31,7 @@ const UserWidget = ({ userId, picturePath }) => {
   return (
     <div className="flex flex-col px-4 pt-6 pb-3 cursor-pointer mt-8 rounded-lg bg-gray-200" onClick={() => navigate(`/profile/${userId}`)}>
       <div className="flex gap-4">
-        <ProfileImg image={picturePath} />
+        <ProfileImg image={user.picturePath} />
         <div>
           <h4 className="font-sans text-lg font-medium text-blue-500 hover:text-blue-400">
             {firstName} {lastName}
@@ -41,12 +41,11 @@ const UserWidget = ({ userId, picturePath }) => {
           </p>
         </div>
       </div>
+      <hr className="my-2 border-t-2 border-gray-300" />  
 
-      <hr className="my-4" />
-
-      <div className="px-4 py-2 flex items-center gap-4">
+      <div className="ml-2 py-2 flex items-center gap-2">
         <FaLocationDot size={20} />
-        <p className="text-gray-500">
+        <p className="text-gray-500 mt-1">
           {location}
         </p>
       </div>
