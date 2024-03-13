@@ -1,5 +1,5 @@
 # Social media website
-#### Video Demo: 
+#### Video Demo: https://youtu.be/ZT7-0moHYL4
 
 ## Table of Contents
 - [About the Project](#about-the-project)

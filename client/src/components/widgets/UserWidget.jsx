@@ -31,7 +31,7 @@ const UserWidget = ({ userId, picturePath }) => {
   return (
     <div className="flex flex-col px-4 pt-6 pb-3 cursor-pointer mt-8 rounded-lg bg-gray-200" onClick={() => navigate(`/profile/${userId}`)}>
       <div className="flex gap-4">
-        <ProfileImg image={user.picturePath} />
+        <ProfileImg image={picturePath} />
         <div>
           <h4 className="font-sans text-lg font-medium text-blue-500 hover:text-blue-400">
             {firstName} {lastName}
