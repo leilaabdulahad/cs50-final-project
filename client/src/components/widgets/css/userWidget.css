@@ -1,0 +1,12 @@
+.user-widget-image{
+    margin-top: 2px;
+    min-width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.user-widget-name{
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 5px;
+}

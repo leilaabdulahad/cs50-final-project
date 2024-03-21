@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import ProfileImg from "../ProfileImg"
 import { FaLocationDot } from "react-icons/fa6"
 import '../../index.css'
+import './css/userWidget.css'
 
 const UserWidget = ({ userId, picturePath }) => {
   const token = useSelector((state) => state.token)
@@ -29,11 +30,17 @@ const UserWidget = ({ userId, picturePath }) => {
 
   const { firstName, lastName, location, friends } = user
   return (
-    <div className="flex flex-col px-4 pt-6 pb-3 cursor-pointer mt-8 rounded-lg bg-gray-200" onClick={() => navigate(`/profile/${userId}`)}>
+    <div className="w-full flex flex-col px-4 pt-8 pb-3 cursor-pointer mt-8 rounded-lg bg-gray-200" onClick={() => navigate(`/profile/${userId}`)}>
       <div className="flex gap-4">
-        <ProfileImg image={picturePath} />
         <div>
-          <h4 className="font-sans text-lg font-medium text-blue-500 hover:text-blue-400">
+          <img
+            className="user-widget-image"
+            alt="user profile"
+            src={`http://localhost:3001/assets/${picturePath}`}
+          />
+        </div>
+        <div className="mr-4">
+          <h4 className="user-widget-name font-sans text-blue-500 hover:text-blue-400">
             {firstName} {lastName}
           </h4>
           <p className="text-gray-500">

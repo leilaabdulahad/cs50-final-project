@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFriends } from "../../store/store";
 import { FaUserPlus, FaUserMinus } from "react-icons/fa6";
 
-const FriendListWidget = ({ userId }) => {
+const FriendListWidget = ({ userId, picturePath }) => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
   const friends = useSelector((state) => state.user.friends);
@@ -43,13 +43,6 @@ const FriendListWidget = ({ userId }) => {
             friend._id ? (
               <div className="relative flex flex-col" key={friend._id}>
                 <div className="flex gap-4">
-                  <div className="rounded-full overflow-hidden md:hidden lg:block">
-                    <img
-                      alt="user profile"
-                      src={`http://localhost:3001/assets/${friend.picturePath}`}
-                      className="w-16 h-16 object-cover cursor-pointer hover:opacity-80"
-                    />
-                  </div>
                   <div className="cursor-pointer">
                     <div className="text-xl mt-2 pr-8 font-semibold text-blue-500 hover:text-blue-400">
                       {`${friend.firstName} ${friend.lastName}`}

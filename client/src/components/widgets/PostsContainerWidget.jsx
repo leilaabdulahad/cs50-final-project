@@ -31,7 +31,7 @@ const PostsContainerWidget = ({ userId, isProfile = false }) => {
   }, [dispatch, token, isProfile, userId]);
 
   return (
-    <div className={`${isProfile && loggedInUserId !== userId ? 'transform -translate-y-8' : ''}`} style={{ marginTop: '48px' }}>
+    <div className={`${isProfile && loggedInUserId !== userId ? 'transform -translate-y-8' : ''}`} style={{ marginTop: '33px' }}>
       {posts && posts.length > 0 ? posts.slice().reverse().map(
         ({
           _id,
